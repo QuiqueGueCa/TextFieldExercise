@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etTop"
+        style="@style/editText"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etBottom"
+        style="@style/editText"/>
+
+    <TextView
+        android:id="@+id/tvTxtToShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txtSize"
+        tools:text="El texto en cuestión"
+        android:layout_margin="@dimen/common_padding_default"/>
+
+    <Button
+        android:id="@+id/btnChecker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnText"
+        android:layout_margin="@dimen/common_padding_default"/>
+</LinearLayout>

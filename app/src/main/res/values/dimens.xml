@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="boxSize">150dp</dimen>
+    <dimen name="common_padding_default">16dp</dimen>
+    <dimen name="txtSize">20sp</dimen>
+</resources>
