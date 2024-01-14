@@ -2,9 +2,10 @@ package com.example.textfieldexercise
 
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doAfterTextChanged
 import com.example.textfieldexercise.databinding.ActivityMainBinding
+import com.google.android.material.textfield.TextInputEditText
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,40 +18,43 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val etTop = binding.etTop
-        val etBottom = binding.etBottom
-        val tvTxtToShow = binding.tvTxtToShow
-        val btnChecker = binding.btnChecker
+        with(binding){
 
+            etTop.setOnFocusChangeListener {
+                    _, _ -> tvTxtToShow.text = getString(R.string.writtingTop) }
 
-        etTop.doAfterTextChanged {
-            tvTxtToShow.text = etTop.text
+            etBottom.setOnFocusChangeListener {
+                    _, _ -> tvTxtToShow.text = getString(R.string.writtingBot) }
+
+            btnChecker.setOnClickListener {
+                tvTxtToShow.text = checkingIfEquals(etTop.text.toString(), etBottom.text.toString())
+            }
+
+            touchingScreen(etTop, etBottom, tvTxtToShow)
         }
-
-        etBottom.doAfterTextChanged {
-            tvTxtToShow.text = etBottom.text
-        }
-
-        btnChecker.setOnClickListener {
-            tvTxtToShow.text = checkingIfEquals(etTop.text.toString(), etBottom.text.toString())
-        }
-
-        quitingKeyboard()
     }
 
+
+    private fun touchingScreen(etTop: TextInputEditText, etBottom: TextInputEditText, tvTxtToShow: TextView) {
+        binding.root.setOnClickListener{
+
+            quitingKeyboard()
+
+            etTop.clearFocus()
+            etBottom.clearFocus()
+            tvTxtToShow.text = ""
+        }
+    }
 
     private fun quitingKeyboard() {
-        binding.root.setOnClickListener{
-            val imm : InputMethodManager =
-                (this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
+        val imm : InputMethodManager =
+            (this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
 
-            if(imm.isAcceptingText){
+        if(imm.isAcceptingText){
 
-                imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-            }
+            imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
     }
-
 
     private fun checkingIfEquals(txtTop: String, txtBottom: String): CharSequence {
 

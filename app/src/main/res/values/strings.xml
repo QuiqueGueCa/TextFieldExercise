@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">TextFieldExercise</string>
-    <string name="tfOne">Texto 1</string>
     <string name="etWriteTxt">Escribe aquí</string>
     <string name="btnText">Comprobar si son iguales</string>
     <string name="equals">Los textos son iguales</string>
     <string name="differents">Los textos son diferentes</string>
+    <string name="writtingTop">Estás escribiendo arriba</string>
+    <string name="writtingBot">Estás escribiendo abajo</string>
 </resources>

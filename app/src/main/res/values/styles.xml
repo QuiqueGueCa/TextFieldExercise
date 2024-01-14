@@ -7,6 +7,8 @@
         <item name="android:textSize">@dimen/txtSize</item>
         <item name="android:hint">@string/etWriteTxt</item>
         <item name="android:layout_margin">@dimen/common_padding_default</item>
+        <item name="android:singleLine">true</item>
+
     </style>
 
 </resources>
