@@ -27,18 +27,18 @@ class MainActivity : AppCompatActivity() {
                     _, _ -> tvTxtToShow.text = getString(R.string.writtingBot) }
 
             btnChecker.setOnClickListener {
-                tvTxtToShow.text = checkingIfEquals(etTop.text.toString(), etBottom.text.toString())
+                tvTxtToShow.text = checkIfEquals(etTop.text.toString(), etBottom.text.toString())
             }
 
-            touchingScreen(etTop, etBottom, tvTxtToShow)
+            touchScreen(etTop, etBottom, tvTxtToShow)
         }
     }
 
 
-    private fun touchingScreen(etTop: TextInputEditText, etBottom: TextInputEditText, tvTxtToShow: TextView) {
+    private fun touchScreen(etTop: TextInputEditText, etBottom: TextInputEditText, tvTxtToShow: TextView) {
         binding.root.setOnClickListener{
 
-            quitingKeyboard()
+            hideKeyboard()
 
             etTop.clearFocus()
             etBottom.clearFocus()
@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun quitingKeyboard() {
+    private fun hideKeyboard() {
         val imm : InputMethodManager =
-            (this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager)
+            this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 
         if(imm.isAcceptingText){
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkingIfEquals(txtTop: String, txtBottom: String): CharSequence {
+    private fun checkIfEquals(txtTop: String, txtBottom: String): CharSequence {
 
         return if (txtTop == txtBottom){
 
